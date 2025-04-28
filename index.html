@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>树叶飘落滑动页面 🍃</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; font-family: 'Helvetica Neue', sans-serif; background: #111; }
+
+    #background-layer {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center;
+      background-size: cover;
+      filter: blur(10px);
+      z-index: 0;
+    }
+    #background-layer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    #leaf-canvas {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: transparent;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .page {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      background: transparent;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .page.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .page h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(-30px);
+      transition: all 0.6s ease;
+    }
+
+    .page p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin: 10px 0;
+      max-width: 300px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .page.active h1,
+    .page.active p {
+      opacity: 1;
+      transform: none;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .images-container img {
+      flex: 1 1 calc(45% - 10px);
+      max-width: 45%;
+      max-height: 30vh;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: all 0.6s ease;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .page.active .images-container img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .images-container img {
+        flex: 1 1 90%;
+        max-width: 90%;
+      }
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #aaa;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<div id="background-layer"></div>
+<canvas id="leaf-canvas"></canvas>
+<div id="container">
+
+  <section class="page active">
+    <h1>江苏保险大处</h1>
+    <p>安徽安绿园携手共建生态农产品供应链</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/LsXzKc9F/2.jpg" alt="图片描述">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>好山：大别山</h1>
+    <p>安绿园生态农产品基地位于大别山腹地--霍山县，海报超过400米。</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/dt6b5CDN/2.jpg" alt="图片2">
+      <img src="https://i.postimg.cc/NMRVm9W4/OIP.jpg" alt="图片3">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>好水：剔水</h1>
+    <p>基地使用剔水作为灌溉源，靠近国家级生态水库--佛子岭水库</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/wx02PQcN/OIP.jpg" alt="图片4">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>绿色农产品</h1>
+    <p>所有农产品均为应季自然生长，并通过国家级绿色产品证认</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/dtDP3BqR/image.jpg" alt="图片5">
+      <img src="https://i.postimg.cc/QdW2kdKH/3.jpg" alt="图片6">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>生态家禽</h1>
+    <p>基地内饲养的家禽以及霍寿黑猪，均采用生态饲养</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/s2sTQjYF/OIP-1.jpg" alt="图片7">
+      <img src="https://i.postimg.cc/nVXfc2V4/OIP.jpg" alt="图片8">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>佛子岭水库野生水产</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/R0YGP7rm/download.jpg" alt="图片9">
+      <img src="https://i.postimg.cc/8cQ4GTPn/th.jpg" alt="图片10">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>绿色蔬菜大礼包</h1>
+    <p>净重量不少于8斤，8种应季蔬菜+葱姜蒜</p>
+    <p>单次卡：88元 月卡（四次）：338元 季卡（12次）：998元</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/L8bzRmxB/1.jpg" alt="图片11">
+      <img src="https://i.postimg.cc/0QpmpDPc/4.jpg" alt="图片12">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>综合大礼包</h1>
+    <p>综合：蔬菜+生鲜家禽或水产，现殺，真空保鲜</p>
+    <p>单次卡：198元 月卡：780元 季卡：2280元</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/ZRhvKnp3/download-1.jpg" alt="图片13">
+      <img src="https://i.postimg.cc/PJSC4Mcz/OIP.jpg" alt="图片14">
+    </div>
+  </section>
+
+  <section class="page">
+    <h1>每周四京东冷链由基地发出，周五到您家</h1>
+    <p>保温袋+冰袋+泡沫箱</p>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/vZJc3TPj/3.jpg" alt="图片13">
+      <img src="https://i.postimg.cc/LXRhF7F3/OIP-1.jpg" alt="图片14">
+    </div>
+  </section>
+
+</div>
+
+<div class="dots"></div>
+
+<script>
+// 树叶飘落动画
+const canvas = document.getElementById('leaf-canvas');
+const ctx = canvas.getContext('2d');
+let leaves = [];
+function initCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  leaves = [];
+  for (let i = 0; i < 30; i++) {
+    leaves.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 20 + 10,
+      speedY: Math.random() * 1 + 0.5,
+      speedX: Math.random() * 0.5 - 0.25,
+      rotation: Math.random() * 360,
+      rotationSpeed: Math.random() * 2 - 1
+    });
+  }
+}
+function drawLeaf(leaf) {
+  ctx.save();
+  ctx.translate(leaf.x, leaf.y);
+  ctx.rotate(leaf.rotation * Math.PI / 180);
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(leaf.size/2, -leaf.size/2, leaf.size, 0);
+  ctx.quadraticCurveTo(leaf.size/2, leaf.size/2, 0, 0);
+  ctx.fill();
+  ctx.restore();
+}
+function animateLeaves() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let leaf of leaves) {
+    leaf.y += leaf.speedY;
+    leaf.x += leaf.speedX;
+    leaf.rotation += leaf.rotationSpeed;
+    if (leaf.y > canvas.height) {
+      leaf.y = -20;
+      leaf.x = Math.random() * canvas.width;
+    }
+    drawLeaf(leaf);
+  }
+  requestAnimationFrame(animateLeaves);
+}
+window.addEventListener('resize', initCanvas);
+initCanvas();
+animateLeaves();
+
+// 页面切换
+const pages = document.querySelectorAll('.page');
+const dotContainer = document.querySelector('.dots');
+let currentPage = 0;
+let isScrolling = false;
+
+function renderDots() {
+  dotContainer.innerHTML = '';
+  pages.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dotContainer.appendChild(dot);
+  });
+}
+function activatePage(index) {
+  pages.forEach((page, i) => page.classList.toggle('active', i === index));
+  document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+function handleSwipe(delta) {
+  if (isScrolling) return;
+  if (Math.abs(delta) > 50) {
+    if (delta > 0 && currentPage < pages.length - 1) currentPage++;
+    else if (delta < 0 && currentPage > 0) currentPage--;
+    else return;
+    isScrolling = true;
+    activatePage(currentPage);
+    setTimeout(() => isScrolling = false, 700);
+  }
+}
+document.addEventListener('wheel', e => handleSwipe(e.deltaY));
+document.addEventListener('touchstart', e => startY = e.touches[0].clientY);
+document.addEventListener('touchend', e => handleSwipe(startY - e.changedTouches[0].clientY));
+
+renderDots();
+activatePage(0);
+</script>
+
+</body>
+</html>
