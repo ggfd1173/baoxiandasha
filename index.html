@@ -88,31 +88,37 @@
     }
 
     .images-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 20px;
-      width: 90%;
-      max-width: 800px;
-    }
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  width: 90%;
+  max-width: 800px;
+
+  /* Hides scrollbar for most browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.images-container::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
 
     .images-container img {
-      flex: 1 1 calc(45% - 10px);
-      max-width: 45%;
-      max-height: 30vh;
-      border-radius: 10px;
-      object-fit: cover;
-      transition: all 0.6s ease;
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    .page.active .images-container img {
-      opacity: 1;
-      transform: scale(1);
-    }
+  flex: 0 0 auto; /* very important: prevent images from shrinking */
+  height: 30vh;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+.page.active .images-container img {
+  opacity: 1;
+  transform: scale(1);
+}
 
     @media (max-width: 768px) {
       .images-container img {
@@ -149,10 +155,10 @@
 <div id="container">
 
   <section class="page active">
-    <h1>江苏保险大处</h1>
+    <h1>江苏保险大厦</h1>
     <p>安徽安绿园携手共建生态农产品供应链</p>
     <div class="images-container">
-      <img src="https://i.postimg.cc/LsXzKc9F/2.jpg" alt="图片描述">
+      <img src="https://i.postimg.cc/C1NS84pV/2.jpg" alt="图片描述">
     </div>
   </section>
 
@@ -177,11 +183,61 @@
     <h1>绿色农产品</h1>
     <p>所有农产品均为应季自然生长，并通过国家级绿色产品证认</p>
     <div class="images-container">
-      <img src="https://i.postimg.cc/dtDP3BqR/image.jpg" alt="图片5">
-      <img src="https://i.postimg.cc/QdW2kdKH/3.jpg" alt="图片6">
+	<img src="https://i.postimg.cc/kgv96mrp/2.jpg" alt="产品2">
+    <img src="https://i.postimg.cc/QdW2kdKH/3.jpg" alt="图片6">
     </div>
   </section>
-
+  <section class="page">
+    <h1>绿色产品认证</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/CMj2LKHb/1.jpg" alt="┬╠╔½╚╧╓ñ1">
+      <img src="https://i.postimg.cc/MT19TsRz/2.jpg" alt="┬╠╔½╚╧╓ñ2">
+	  <img src="https://i.postimg.cc/ZKwVCv9v/3.jpg" alt="┬╠╔½╚╧╓ñ3">
+	  <img src="https://i.postimg.cc/QdVS5N54/4.jpg" alt="┬╠╔½╚╧╓ñ4">
+	  <img src="https://i.postimg.cc/3xp4zPHr/5.jpg" alt="┬╠╔½╚╧╓ñ5">
+	  <img src="https://i.postimg.cc/q7wRTrDr/7.jpg" alt="┬╠╔½╚╧╓ñ6">
+	  <img src="https://i.postimg.cc/Y9VtrC15/8.jpg" alt="┬╠╔½╚╧╓7">
+	  <img src="https://i.postimg.cc/Kvt3H6bG/9.jpg" alt="┬╠╔½╚╧╓ñ8">
+	  <img src="https://i.postimg.cc/LXZ8ZP69/10.jpg" alt="┬╠╔½╚╧╓ñ9">
+    </div>
+  </section>
+  <section class="page">
+    <h1>大棚实拍图</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/MZttP37j/5.jpg" alt="┤≤┼∩╩╡┼─═╝1">
+      <img src="https://i.postimg.cc/BvWCLr0R/12.jpg" alt="┤≤┼∩╩╡┼─═╝2">
+	  <img src="https://i.postimg.cc/26khnmX9/14.jpg" alt="┤≤┼∩╩╡┼─═╝3">
+	  <img src="https://i.postimg.cc/fyFd4dW1/16.jpg" alt="┤≤┼∩╩╡┼─═╝4">
+	  <img src="https://i.postimg.cc/dtbC4Gxy/17.jpg" alt="┤≤┼∩╩╡┼─═╝5">
+    </div>
+  </section>
+  <section class="page">
+    <h1>基地实貌</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/Fs5cxjqJ/1.jpg" alt="╗∙╡╪╚½├▓ 1">
+      <img src="https://i.postimg.cc/Hsdnx3R3/3.jpg" alt="╗∙╡╪╚½├▓ ╝2">
+	  <img src="https://i.postimg.cc/hjV4470H/2.jpg" alt="╗∙╡╪╚½├▓ 3">
+	  <img src="https://i.postimg.cc/vZDQgKz7/5.jpg" alt="╗∙╡╪╚½├▓ 4">
+    </div>
+  </section>
+  <section class="page">
+    <h1>农产品分拣</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/jd0gJn4M/1.jpg" alt="╖╓╝≡╒╒╞¼1">
+      <img src="https://i.postimg.cc/x8rRHBMX/2.jpg" alt="╖╓╝≡╒╒╞¼2">
+	  <img src="https://i.postimg.cc/ryWgcF2x/3.jpg" alt="╖╓╝≡╒╒╞¼3">
+    </div>
+  </section>
+  <section class="page">
+    <h1>农科院严从生教授授课指导</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/GtQy2fQw/2.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝1">
+      <img src="https://i.postimg.cc/7YKzrphS/1.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝2">
+	  <img src="https://i.postimg.cc/t47xq2nw/2.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝3">
+	  <img src="https://i.postimg.cc/Pf4p1Bm0/3.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝4">
+	  <img src="https://i.postimg.cc/qMDN5yDL/4.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝5">
+    </div>
+  </section>
   <section class="page">
     <h1>生态家禽</h1>
     <p>基地内饲养的家禽以及霍寿黑猪，均采用生态饲养</p>
@@ -202,7 +258,7 @@
   <section class="page">
     <h1>绿色蔬菜大礼包</h1>
     <p>净重量不少于8斤，8种应季蔬菜+葱姜蒜</p>
-    <p>单次卡：88元 月卡（四次）：338元 季卡（12次）：998元</p>
+    <p>单次卡：88元<br/>月卡（四次）：338元<br/>季卡（12次）：998元</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/L8bzRmxB/1.jpg" alt="图片11">
       <img src="https://i.postimg.cc/0QpmpDPc/4.jpg" alt="图片12">
@@ -212,7 +268,7 @@
   <section class="page">
     <h1>综合大礼包</h1>
     <p>综合：蔬菜+生鲜家禽或水产，现殺，真空保鲜</p>
-    <p>单次卡：198元 月卡：780元 季卡：2280元</p>
+    <p><br/>单次卡：198元<br/>月卡(四次)：780元<br/>季卡（12次）：2280元</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/ZRhvKnp3/download-1.jpg" alt="图片13">
       <img src="https://i.postimg.cc/PJSC4Mcz/OIP.jpg" alt="图片14">
@@ -318,7 +374,17 @@ document.addEventListener('touchend', e => handleSwipe(startY - e.changedTouches
 
 renderDots();
 activatePage(0);
+document.querySelectorAll('.images-container').forEach(container => {
+  const images = container.querySelectorAll('img');
+  if (images.length <= 2) {
+    container.style.overflowX = 'hidden';
+    container.style.justifyContent = 'center';
+    container.style.flexWrap = 'wrap';
+  }
+});
 </script>
 
 </body>
 </html>
+2K dollar project.html
+Displaying 2K dollar project.html.
