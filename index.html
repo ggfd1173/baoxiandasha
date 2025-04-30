@@ -88,31 +88,37 @@
     }
 
     .images-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 20px;
-      width: 90%;
-      max-width: 800px;
-    }
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  width: 90%;
+  max-width: 800px;
+
+  /* Hides scrollbar for most browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.images-container::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
 
     .images-container img {
-      flex: 1 1 calc(45% - 10px);
-      max-width: 45%;
-      max-height: 30vh;
-      border-radius: 10px;
-      object-fit: cover;
-      transition: all 0.6s ease;
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    .page.active .images-container img {
-      opacity: 1;
-      transform: scale(1);
-    }
+  flex: 0 0 auto; /* very important: prevent images from shrinking */
+  height: 30vh;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+.page.active .images-container img {
+  opacity: 1;
+  transform: scale(1);
+}
 
     @media (max-width: 768px) {
       .images-container img {
@@ -140,6 +146,20 @@
     .dot.active {
       background: #fff;
     }
+	p{
+	background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+	}
+	h1{
+	background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+	}
   </style>
 </head>
 
@@ -149,16 +169,16 @@
 <div id="container">
 
   <section class="page active">
-    <h1>江苏保险大处</h1>
-    <p>安徽安绿园携手共建生态农产品供应链</p>
+    <h1>江苏保险大厦</h1>
+    <p>安徽安绿园携手共建<br/>生态农产品供应链</p>
     <div class="images-container">
-      <img src="https://i.postimg.cc/LsXzKc9F/2.jpg" alt="图片描述">
+      <img src="https://i.postimg.cc/C1NS84pV/2.jpg" alt="图片描述">
     </div>
   </section>
 
   <section class="page">
-    <h1>好山：大别山</h1>
-    <p>安绿园生态农产品基地位于大别山腹地--霍山县，海报超过400米。</p>
+    <h1>好山:大别山</h1>
+    <p>安绿园农产品基地位于<br/>大别山腹地--霍山县<br/>海拔超过400米</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/dt6b5CDN/2.jpg" alt="图片2">
       <img src="https://i.postimg.cc/NMRVm9W4/OIP.jpg" alt="图片3">
@@ -166,34 +186,102 @@
   </section>
 
   <section class="page">
-    <h1>好水：剔水</h1>
-    <p>基地使用剔水作为灌溉源，靠近国家级生态水库--佛子岭水库</p>
+    <h1>好水：剐水<br/>（竹根水）</h1>
+    <p>基地使用剐水作为灌溉源<br/>源自国家级生态水库<br/>佛子岭水库<br/>水域面积达1700多公顷<br/>其水质达到国家一类水标准</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/wx02PQcN/OIP.jpg" alt="图片4">
     </div>
   </section>
-
   <section class="page">
-    <h1>绿色农产品</h1>
-    <p>所有农产品均为应季自然生长，并通过国家级绿色产品证认</p>
+    <h1>竹根剐水</h1>
+    <p>山泉水源自佛子岭水库，流经茫茫竹海，经地下竹根层层过滤，寡淡清纯，把人身上的油脂都刮掉了，所以被形象地称之为“剐水”</p>
     <div class="images-container">
-      <img src="https://i.postimg.cc/dtDP3BqR/image.jpg" alt="图片5">
-      <img src="https://i.postimg.cc/QdW2kdKH/3.jpg" alt="图片6">
+      <img src="https://i.postimg.cc/ZqNnkvBy/media-t-public-a24bc675caa34fc6-65-b2-65b20072-7b4a-4eea-8b14-1220510c8555-640.png" alt="图片4">
+      <img src="https://i.postimg.cc/MTbGHkY6/OIP.jpg" alt="图片4">
     </div>
   </section>
-
+  <section class="page">
+    <h1>绿色农产品</h1>
+    <p>所有农产品均应季自然生长<br/>并通过国家级绿色产品</p>
+    <div class="images-container">
+	  <img src="https://i.postimg.cc/kgv96mrp/2.jpg" alt="认证产品2">
+    <img src="https://i.postimg.cc/QdW2kdKH/3.jpg" alt="图片6">
+    <img src="https://i.postimg.cc/BbPPv7tM/5.jpg" alt="img1">
+    <img src="https://i.postimg.cc/fRNC6mg6/2.jpg" alt="img1">
+    <img src="https://i.postimg.cc/gJX3w2TV/4.jpg" alt="img1">
+    </div>
+  </section>
+  <section class="page">
+    <h1>绿色产品认证</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/CMj2LKHb/1.jpg" alt="┬╠╔½╚╧╓ñ1">
+      <img src="https://i.postimg.cc/MT19TsRz/2.jpg" alt="┬╠╔½╚╧╓ñ2">
+	  <img src="https://i.postimg.cc/ZKwVCv9v/3.jpg" alt="┬╠╔½╚╧╓ñ3">
+	  <img src="https://i.postimg.cc/QdVS5N54/4.jpg" alt="┬╠╔½╚╧╓ñ4">
+	  <img src="https://i.postimg.cc/3xp4zPHr/5.jpg" alt="┬╠╔½╚╧╓ñ5">
+	  <img src="https://i.postimg.cc/q7wRTrDr/7.jpg" alt="┬╠╔½╚╧╓ñ6">
+	  <img src="https://i.postimg.cc/Y9VtrC15/8.jpg" alt="┬╠╔½╚╧╓7">
+	  <img src="https://i.postimg.cc/Kvt3H6bG/9.jpg" alt="┬╠╔½╚╧╓ñ8">
+	  <img src="https://i.postimg.cc/LXZ8ZP69/10.jpg" alt="┬╠╔½╚╧╓ñ9">
+    </div>
+  </section>
+  <section class="page">
+    <h1>大棚实拍图</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/MZttP37j/5.jpg" alt="┤≤┼∩╩╡┼─═╝1">
+      <img src="https://i.postimg.cc/BvWCLr0R/12.jpg" alt="┤≤┼∩╩╡┼─═╝2">
+	  <img src="https://i.postimg.cc/26khnmX9/14.jpg" alt="┤≤┼∩╩╡┼─═╝3">
+	  <img src="https://i.postimg.cc/fyFd4dW1/16.jpg" alt="┤≤┼∩╩╡┼─═╝4">
+	  <img src="https://i.postimg.cc/dtbC4Gxy/17.jpg" alt="┤≤┼∩╩╡┼─═╝5">
+    </div>
+  </section>
+  <section class="page">
+    <h1>基地实貌</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/Fs5cxjqJ/1.jpg" alt="╗∙╡╪╚½├▓ 1">
+      <img src="https://i.postimg.cc/Hsdnx3R3/3.jpg" alt="╗∙╡╪╚½├▓ ╝2">
+	  <img src="https://i.postimg.cc/hjV4470H/2.jpg" alt="╗∙╡╪╚½├▓ 3">
+	  <img src="https://i.postimg.cc/vZDQgKz7/5.jpg" alt="╗∙╡╪╚½├▓ 4">
+    </div>
+  </section>
+  <section class="page">
+    <h1>农产品分拣</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/jd0gJn4M/1.jpg" alt="╖╓╝≡╒╒╞¼1">
+      <img src="https://i.postimg.cc/x8rRHBMX/2.jpg" alt="╖╓╝≡╒╒╞¼2">
+	  <img src="https://i.postimg.cc/ryWgcF2x/3.jpg" alt="╖╓╝≡╒╒╞¼3">
+    </div>
+  </section>
+  <section class="page">
+    <h1>农科院严从生<br/>教授授课指导</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/GtQy2fQw/2.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝1">
+      <img src="https://i.postimg.cc/7YKzrphS/1.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝2">
+	  <img src="https://i.postimg.cc/t47xq2nw/2.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝3">
+	  <img src="https://i.postimg.cc/Pf4p1Bm0/3.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝4">
+	  <img src="https://i.postimg.cc/qMDN5yDL/4.jpg" alt="┼⌐┐╞╘║╤╨╛┐╔·╩╡╤╡╓╕╡╝5">
+    </div>
+  </section>
   <section class="page">
     <h1>生态家禽</h1>
-    <p>基地内饲养的家禽以及霍寿黑猪，均采用生态饲养</p>
+    <p>均采用生态饲养</p>
     <div class="images-container">
-      <img src="https://i.postimg.cc/s2sTQjYF/OIP-1.jpg" alt="图片7">
       <img src="https://i.postimg.cc/nVXfc2V4/OIP.jpg" alt="图片8">
     </div>
   </section>
-
   <section class="page">
-    <h1>佛子岭水库野生水产</h1>
+    <h1>霍寿黑猪</h1>
+    <p>均采用生态饲养</p>
     <div class="images-container">
+      <img src="https://i.postimg.cc/s2sTQjYF/OIP-1.jpg" alt="图片7">
+    </div>
+  </section>
+  <section class="page">
+    <h1>野生水产</h1>
+    <div class="images-container">
+      <img src="https://i.postimg.cc/WpDTHSS3/OIP-1.jpg" alt="图片10">
+      <img src="https://i.postimg.cc/KYsC7S65/OIP.jpg" alt="图片10">
+      <img src="https://i.postimg.cc/fyQ25wBY/OIP-2.jpg" alt="图片10">
       <img src="https://i.postimg.cc/R0YGP7rm/download.jpg" alt="图片9">
       <img src="https://i.postimg.cc/8cQ4GTPn/th.jpg" alt="图片10">
     </div>
@@ -202,7 +290,7 @@
   <section class="page">
     <h1>绿色蔬菜大礼包</h1>
     <p>净重量不少于8斤，8种应季蔬菜+葱姜蒜</p>
-    <p>单次卡：88元 月卡（四次）：338元 季卡（12次）：998元</p>
+    <p>单次卡：88元<br/>月卡（四次）：338元<br/>季卡（12次）：998元</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/L8bzRmxB/1.jpg" alt="图片11">
       <img src="https://i.postimg.cc/0QpmpDPc/4.jpg" alt="图片12">
@@ -211,8 +299,8 @@
 
   <section class="page">
     <h1>综合大礼包</h1>
-    <p>综合：蔬菜+生鲜家禽或水产，现殺，真空保鲜</p>
-    <p>单次卡：198元 月卡：780元 季卡：2280元</p>
+    <p>蔬菜+生鲜家禽或水产，现殺，真空保鲜</p>
+    <p>单次卡：198元<br/>月卡(四次)：780元<br/>季卡（12次）：2280元</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/ZRhvKnp3/download-1.jpg" alt="图片13">
       <img src="https://i.postimg.cc/PJSC4Mcz/OIP.jpg" alt="图片14">
@@ -220,7 +308,7 @@
   </section>
 
   <section class="page">
-    <h1>每周四京东冷链由基地发出，周五到您家</h1>
+    <p>每周四京东冷链由基地发出，周五到您家</p>
     <p>保温袋+冰袋+泡沫箱</p>
     <div class="images-container">
       <img src="https://i.postimg.cc/vZJc3TPj/3.jpg" alt="图片13">
@@ -318,7 +406,17 @@ document.addEventListener('touchend', e => handleSwipe(startY - e.changedTouches
 
 renderDots();
 activatePage(0);
+document.querySelectorAll('.images-container').forEach(container => {
+  const images = container.querySelectorAll('img');
+  if (images.length <= 1) {
+    container.style.overflowX = 'hidden';
+    container.style.justifyContent = 'center';
+    container.style.flexWrap = 'wrap';
+  }
+});
 </script>
 
 </body>
 </html>
+2K dollar project.html
+Displaying 2K dollar project.html.
